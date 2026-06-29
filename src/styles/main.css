@@ -1,1 +1,16 @@
-@import 'tailwindcss';
+@layer theme, base, components, utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+@import './theme.css' layer(theme);
+
+@import './base/reset.css' layer(base);
+@import './base/global.css' layer(base);
+
+@import './components/button.css' layer(components);
+@import './components/container.css' layer(components);
+@import './components/flow.css' layer(components);
+@import './components/grid.css' layer(components);
+@import './components/prose.css' layer(components);
+@import './components/sidebar.css' layer(components);
+
+@import 'tailwindcss/utilities.css' layer(utilities);

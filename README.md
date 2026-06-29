@@ -1,4 +1,3 @@
-### Programming for Interactivity
+### Programming Interactivity
 
-See
-[musingswithcode.github.io/programming-for-interactivity/](https://musingswithcode.github.io/programming-for-interactivity).
+See [musingswithcode.github.io/programming-interactivity](https://musingswithcode.github.io/programming-interactivity).

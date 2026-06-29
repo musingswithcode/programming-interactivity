@@ -1,0 +1,12 @@
+.button {
+  display: inline-block;
+  padding: 0.5em 1em;
+  background: var(--color-accent);
+  color: var(--color-lightest);
+  text-decoration: none;
+  transition: opacity 250ms ease-in-out;
+  font-size: var(--text--1);
+}
+.button:hover {
+  opacity: 0.75;
+}

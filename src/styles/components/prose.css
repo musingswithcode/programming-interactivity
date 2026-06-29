@@ -1,0 +1,21 @@
+.prose :is(h1, h2, h3) {
+  --flow-space: 2em;
+}
+.prose :is(h1, h2, h3) + * {
+  --flow-space: 0.5em;
+}
+
+.prose :is(blockquote, ul, ol, pre) {
+  --flow-space: 1.5em;
+}
+.prose :is(blockquote, ul, ol, pre) + * {
+  --flow-space: 1.5em;
+}
+
+.prose :is(h1, h2, h3) {
+  max-width: 30ch;
+}
+.prose :is(p, li, blockquote) {
+  max-width: 55ch;
+  text-wrap: pretty;
+}
