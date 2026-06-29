@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   devToolbar: {enabled: false},
-  vite: {
-    plugins: [tailwindcss()]
-  }
+  vite: {plugins: [tailwindcss()]},
+  site: 'https://musingswithcode.github.io',
+  base: '/programming-interactivity'
 })
