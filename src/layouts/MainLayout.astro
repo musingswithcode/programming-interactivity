@@ -17,6 +17,9 @@ import '~/styles/main.css'
       href="/programming-for-interactivity/favicon.svg"
     />
     <title>Programming for Interactivity</title>
+    <script is:inline src="/programming-interactivity/libs/p5.min.js"></script>
+    <script is:inline src="/programming-interactivity/libs/p5.sound.min.js"
+    ></script>
   </head>
   <body class="my-2xl-3xl">
     <article class="prose container flow">
@@ -24,3 +27,8 @@ import '~/styles/main.css'
     </article>
   </body>
 </html>
+
+<script>
+  import * as dx from '../scripts/core.js'
+  for (let [key, val] of Object.entries(dx)) window[key] = val
+</script>

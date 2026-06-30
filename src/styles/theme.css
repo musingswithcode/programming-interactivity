@@ -1,13 +1,21 @@
 @theme static {
-  --*: initial;
-
   --font-serif: 'Crimson Pro', serif;
 
-  --color-accent: #ff4136;
-  --color-dark: #0f0f0f;
-  --color-light: #faf9f5;
-  --color-muted: #5b5b66;
-  --color-lightest: #fff;
+  --color-accent: oklch(65.95% 0.2272 28.44);
+  --color-dark: oklch(16.84% 0 0);
+  --color-light: oklch(98.18% 0.0054 95.1);
+  --color-muted: oklch(47.51% 0.0176 285.71);
+  --color-lightest: oklch(100% 0 0);
+
+  --color-step-1: oklch(59.15% 0.2569 322.9);
+  --color-step-2: oklch(54.13% 0.2466 293.01);
+  --color-step-3: oklch(51.06% 0.2301 276.97);
+  --color-step-4: oklch(58.76% 0.1389 241.97);
+  --color-step-5: oklch(60.02% 0.1038 184.7);
+  --color-step-6: oklch(62.71% 0.1699 149.21);
+  --color-step-7: oklch(68.06% 0.1423 75.83);
+  --color-step-8: oklch(64.61% 0.1943 41.12);
+  --color-step-9: oklch(58.58% 0.222 17.58);
 
   --spacing-3xs: clamp(0.3125rem, 0.2908rem + 0.1087vw, 0.375rem);
   --spacing-2xs: clamp(0.5625rem, 0.4973rem + 0.3261vw, 0.75rem);
