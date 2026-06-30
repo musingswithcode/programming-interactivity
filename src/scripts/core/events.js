@@ -27,6 +27,15 @@ export function evented() {
   }
 }
 
+export function hover($el, {enter, exit}) {
+  $el.on('mouseover focus', event => {
+    enter?.(event)
+  })
+  $el.on('mouseout blur', event => {
+    exit?.(event)
+  })
+}
+
 export function touch($el, {down, move, up}) {
   $el.style('touch-action', 'none')
   $el.on('pointerdown', event => {

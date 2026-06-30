@@ -16,6 +16,10 @@ export class Element {
     return $$(selector, this)
   }
 
+  get data() {
+    return this._el.dataset
+  }
+
   attr(name, value) {
     if (value === undefined) {
       return this._el.getAttribute(name)

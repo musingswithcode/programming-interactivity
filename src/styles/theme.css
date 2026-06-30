@@ -1,4 +1,4 @@
-@theme static {
+@theme {
   --font-serif: 'Crimson Pro', serif;
 
   --color-accent: oklch(65.95% 0.2272 28.44);
@@ -7,22 +7,22 @@
   --color-muted: oklch(47.51% 0.0176 285.71);
   --color-lightest: oklch(100% 0 0);
 
-  --color-step-1: oklch(59.15% 0.2569 322.9);
-  --color-step-2: oklch(54.13% 0.2466 293.01);
-  --color-step-3: oklch(51.06% 0.2301 276.97);
-  --color-step-4: oklch(58.76% 0.1389 241.97);
-  --color-step-5: oklch(60.02% 0.1038 184.7);
-  --color-step-6: oklch(62.71% 0.1699 149.21);
-  --color-step-7: oklch(68.06% 0.1423 75.83);
-  --color-step-8: oklch(64.61% 0.1943 41.12);
-  --color-step-9: oklch(58.58% 0.222 17.58);
+  --color-pink: oklch(59.15% 0.2569 322.9);
+  --color-purple: oklch(54.13% 0.2466 293.01);
+  --color-indigo: oklch(51.06% 0.2301 276.97);
+  --color-blue: oklch(58.76% 0.1389 241.97);
+  --color-teal: oklch(60.02% 0.1038 184.7);
+  --color-green: oklch(62.71% 0.1699 149.21);
+  --color-yellow: oklch(68.06% 0.1423 75.83);
+  --color-orange: oklch(64.61% 0.1943 41.12);
+  --color-red: oklch(58.58% 0.222 17.58);
 
   --spacing-3xs: clamp(0.3125rem, 0.2908rem + 0.1087vw, 0.375rem);
   --spacing-2xs: clamp(0.5625rem, 0.4973rem + 0.3261vw, 0.75rem);
   --spacing-xs: clamp(0.875rem, 0.788rem + 0.4348vw, 1.125rem);
-  --spacing-s: clamp(1.125rem, 0.9946rem + 0.6522vw, 1.5rem);
-  --spacing-m: clamp(1.6875rem, 1.4918rem + 0.9783vw, 2.25rem);
-  --spacing-l: clamp(2.25rem, 1.9891rem + 1.3043vw, 3rem);
+  --spacing-sm: clamp(1.125rem, 0.9946rem + 0.6522vw, 1.5rem);
+  --spacing-md: clamp(1.6875rem, 1.4918rem + 0.9783vw, 2.25rem);
+  --spacing-lg: clamp(2.25rem, 1.9891rem + 1.3043vw, 3rem);
   --spacing-xl: clamp(3.375rem, 2.9837rem + 1.9565vw, 4.5rem);
   --spacing-2xl: clamp(4.5rem, 3.9783rem + 2.6087vw, 6rem);
   --spacing-3xl: clamp(6.75rem, 5.9674rem + 3.913vw, 9rem);
@@ -30,24 +30,24 @@
   /* One-up pairs */
   --spacing-3xs-2xs: clamp(0.3125rem, 0.1603rem + 0.7609vw, 0.75rem);
   --spacing-2xs-xs: clamp(0.5625rem, 0.3668rem + 0.9783vw, 1.125rem);
-  --spacing-xs-s: clamp(0.875rem, 0.6576rem + 1.087vw, 1.5rem);
-  --spacing-s-m: clamp(1.125rem, 0.7337rem + 1.9565vw, 2.25rem);
-  --spacing-m-l: clamp(1.6875rem, 1.231rem + 2.2826vw, 3rem);
-  --spacing-l-xl: clamp(2.25rem, 1.4674rem + 3.913vw, 4.5rem);
+  --spacing-xs-sm: clamp(0.875rem, 0.6576rem + 1.087vw, 1.5rem);
+  --spacing-sm-md: clamp(1.125rem, 0.7337rem + 1.9565vw, 2.25rem);
+  --spacing-md-lg: clamp(1.6875rem, 1.231rem + 2.2826vw, 3rem);
+  --spacing-lg-xl: clamp(2.25rem, 1.4674rem + 3.913vw, 4.5rem);
   --spacing-xl-2xl: clamp(3.375rem, 2.462rem + 4.5652vw, 6rem);
   --spacing-2xl-3xl: clamp(4.5rem, 2.9348rem + 7.8261vw, 9rem);
 
   /* Custom pairs */
-  --spacing-s-l: clamp(1.125rem, 0.4728rem + 3.2609vw, 3rem);
+  --spacing-sm-lg: clamp(1.125rem, 0.4728rem + 3.2609vw, 3rem);
 
-  --text--2: clamp(0.7813rem, 0.7191rem + 0.3109vw, 0.96rem);
-  --text--1: clamp(0.9375rem, 0.8462rem + 0.4565vw, 1.2rem);
-  --text-0: clamp(1.125rem, 0.9946rem + 0.6522vw, 1.5rem);
-  --text-1: clamp(1.35rem, 1.1674rem + 0.913vw, 1.875rem);
-  --text-2: clamp(1.62rem, 1.3683rem + 1.2587vw, 2.3438rem);
-  --text-3: clamp(1.944rem, 1.6012rem + 1.7142vw, 2.9297rem);
-  --text-4: clamp(2.3328rem, 1.8704rem + 2.3118vw, 3.6621rem);
-  --text-5: clamp(2.7994rem, 2.1808rem + 3.0927vw, 4.5776rem);
+  --text-xs: clamp(0.7813rem, 0.7191rem + 0.3109vw, 0.96rem);
+  --text-sm: clamp(0.9375rem, 0.8462rem + 0.4565vw, 1.2rem);
+  --text-md: clamp(1.125rem, 0.9946rem + 0.6522vw, 1.5rem);
+  --text-lg: clamp(1.35rem, 1.1674rem + 0.913vw, 1.875rem);
+  --text-xl: clamp(1.62rem, 1.3683rem + 1.2587vw, 2.3438rem);
+  --text-2xl: clamp(1.944rem, 1.6012rem + 1.7142vw, 2.9297rem);
+  --text-3xl: clamp(2.3328rem, 1.8704rem + 2.3118vw, 3.6621rem);
+  --text-4xl: clamp(2.7994rem, 2.1808rem + 3.0927vw, 4.5776rem);
 
   --leading-none: 1;
   --leading-tight: 1.25;

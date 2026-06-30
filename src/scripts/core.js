@@ -1,6 +1,5 @@
-import {animate} from './core/animation.js'
-import {$, $$, $N} from './core/elements.js'
-import {svgPosition, touch} from './core/events.js'
-import {observable} from './core/observable.js'
-
-export {animate, $, $$, $N, svgPosition, touch, observable}
+export * from './core/animation.js'
+export * from './core/elements.js'
+export * from './core/events.js'
+export * from './core/observable.js'
+export * from './core/utilities.js'

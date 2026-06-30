@@ -20,15 +20,11 @@ import '~/styles/main.css'
     <script is:inline src="/programming-interactivity/libs/p5.min.js"></script>
     <script is:inline src="/programming-interactivity/libs/p5.sound.min.js"
     ></script>
+    <script src="../scripts/sections.js"></script>
   </head>
   <body class="my-2xl-3xl">
-    <article class="prose container flow">
+    <article class="prose container-content flow">
       <slot />
     </article>
   </body>
 </html>
-
-<script>
-  import * as dx from '../scripts/core.js'
-  for (let [key, val] of Object.entries(dx)) window[key] = val
-</script>

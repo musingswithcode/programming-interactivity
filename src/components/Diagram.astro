@@ -1,0 +1,86 @@
+---
+import {range} from '~/scripts/core'
+
+const {
+  width = 500,
+  height = 500,
+  grid = false,
+  axises = false,
+  origin = false
+} = Astro.props
+
+const xTicks = range(0, width, 10)
+const yTicks = range(0, height, 10)
+---
+
+<div class="relative">
+  <svg class="w-full h-[400px] bg-lightest" viewBox={`0 0 ${width} ${height}`}>
+    {
+      grid && (
+        <g class="grid">
+          {xTicks.map(tick => (
+            <line
+              data-target="x-grid"
+              class="stroke-1 stroke-muted/20"
+              x1={tick}
+              y1="0"
+              x2={tick}
+              y2={height}
+            />
+          ))}
+          {yTicks.map(tick => (
+            <line
+              data-target="y-grid"
+              class="stroke-1 stroke-muted/20"
+              x1="0"
+              y1={tick}
+              x2={width}
+              y2={tick}
+            />
+          ))}
+        </g>
+      )
+    }
+
+    {
+      axises && (
+        <g class="axises">
+          <line
+            data-target="x-axis"
+            class="stroke-4 stroke-yellow"
+            x1="0"
+            y1="2"
+            x2="500"
+            y2="2"
+          />
+          <line
+            data-target="y-axis"
+            class="stroke-4 stroke-yellow"
+            x1="2"
+            y1="0"
+            x2="2"
+            y2="500"
+            dx="2"
+          />
+        </g>
+      )
+    }
+
+    <slot />
+  </svg>
+
+  {
+    origin && (
+      <div
+        data-target="origin"
+        class="absolute top-0 left-0 w-xs h-xs rounded-full bg-blue"
+      />
+    )
+  }
+</div>
+
+<style>
+  [data-target='origin'] {
+    translate: calc(-50% + 2px) calc(-50% + 2px);
+  }
+</style>

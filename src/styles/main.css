@@ -1,6 +1,7 @@
 @layer theme, base, components, utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+@import 'tailwindcss/theme.css';
 @import './theme.css' layer(theme);
 
 @import './base/reset.css' layer(base);
@@ -14,3 +15,4 @@
 @import './components/sidebar.css' layer(components);
 
 @import 'tailwindcss/utilities.css' layer(utilities);
+@import './utilities/target.css' layer(utilities);

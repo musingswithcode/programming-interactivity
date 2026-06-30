@@ -1,0 +1,24 @@
+[data-target] {
+  transition-property: background, scale;
+  transition-timing-function: var(--ease-in-out);
+  transition-duration: 200ms;
+}
+[data-target].focus {
+  scale: 1.25;
+}
+section.focus [data-target]:not(.focus) {
+  background: color-mix(in oklab, var(--color-muted) 75%, transparent);
+}
+
+line[data-target] {
+  transition-property: stroke, stroke-width;
+  transition-timing-function: ease-in-out;
+  transition-duration: 200ms;
+}
+line[data-target].focus {
+  scale: 1;
+  stroke-width: 8px;
+}
+section.focus line[data-target]:not(.focus) {
+  stroke: color-mix(in oklab, var(--color-muted) 25%, transparent);
+}

@@ -1,0 +1,46 @@
+---
+import {Code} from 'astro:components'
+import Diagram from '~/components/Diagram.astro'
+import Trigger from '~/components/Trigger.astro'
+---
+
+<section id="ref-coordinates" class="prose flow">
+  <h3>Coordinates</h3>
+
+  <div
+    class="sidebar"
+    data-direction="rtl"
+    style="--sidebar-target-width: 400px"
+  >
+    <div class="prose flow">
+      <p>
+        Drawing on a canvas is a lot like drawing on a piece of graph paper.
+        Each point is denoted by two numbers: the x coordinate and the y
+        coordinate. The
+        {' '}
+        <Trigger target="x-axis" color="yellow">x axis</Trigger>
+        {' '}
+        runs from left to right and the
+        {' '}
+        <Trigger target="y-axis" color="yellow">y axis</Trigger>
+        {' '}
+        runs from top to bottom. The
+        {' '}
+        <Trigger target="origin" color="blue">origin</Trigger>
+        {' '}
+        or
+        <code>(0, 0)</code>
+        of the coordinate system is at the top-left.
+      </p>
+
+      <p>
+        To create a canvas of a particular width and height, use
+        <code>createCanvas(width, height)</code>.
+      </p>
+
+      <Code code={`createCanvas(500, 500)`} theme="github-light" lang="js" />
+    </div>
+
+    <Diagram width={500} height={500} grid axises origin />
+  </div>
+</section>
