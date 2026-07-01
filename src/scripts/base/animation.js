@@ -1,4 +1,4 @@
-import {lerp} from './utilities.js'
+import {lerp} from '../utilities.js'
 
 function ease(type, t) {
   switch (type) {

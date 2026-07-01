@@ -1,5 +1,5 @@
 import {evented} from './events.js'
-import {words} from './utilities.js'
+import {words} from '../utilities.js'
 
 export class Element {
   constructor(el) {
@@ -14,6 +14,10 @@ export class Element {
 
   $$(selector) {
     return $$(selector, this)
+  }
+
+  closest(selector) {
+    return $(this._el.closest(selector))
   }
 
   get data() {

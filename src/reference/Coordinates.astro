@@ -1,10 +1,11 @@
 ---
 import {Code} from 'astro:components'
 import Diagram from '~/components/Diagram.astro'
+import Section from '~/components/Section.astro'
 import Trigger from '~/components/Trigger.astro'
 ---
 
-<section id="ref-coordinates" class="prose flow">
+<Section name="coordinates">
   <h3>Coordinates</h3>
 
   <div
@@ -43,4 +44,4 @@ import Trigger from '~/components/Trigger.astro'
 
     <Diagram width={500} height={500} grid axises origin />
   </div>
-</section>
+</Section>

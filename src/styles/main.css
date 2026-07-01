@@ -8,11 +8,11 @@
 @import './base/global.css' layer(base);
 
 @import './components/button.css' layer(components);
-@import './components/container.css' layer(components);
 @import './components/flow.css' layer(components);
 @import './components/grid.css' layer(components);
 @import './components/prose.css' layer(components);
 @import './components/sidebar.css' layer(components);
+@import './components/wrapper.css' layer(components);
 
 @import 'tailwindcss/utilities.css' layer(utilities);
 @import './utilities/target.css' layer(utilities);

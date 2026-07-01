@@ -53,6 +53,6 @@
   --leading-tight: 1.25;
   --leading-normal: 1.5;
 
-  --content-max-width: 75rem;
+  --wrapper-max-width: 75rem;
   --gutter: var(--spacing-xs-s, clamp(0.875rem, 0.6576rem + 1.087vw, 1.5rem));
 }

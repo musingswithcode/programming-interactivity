@@ -1,0 +1,7 @@
+---
+const {name, ...rest} = Astro.props
+---
+
+<section data-section={name} class="prose flow" {...rest}>
+  <slot />
+</section>

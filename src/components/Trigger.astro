@@ -4,9 +4,10 @@ const {target, color} = Astro.props
 
 <span
   class:list={[
-    'trigger inline-block rounded-full text-lightest cursor-pointer transition duration-150 ease-in px-2xs font-thin hover:shadow-sm',
+    'trigger inline-block rounded-full text-lightest cursor-pointer transition duration-150 ease-in px-2xs pb-0.5 font-thin hover:shadow-sm',
     color
   ]}
+  data-component="trigger"
   data-to={target}
   style=`--trigger-background: var(--color-${color})`
 >
@@ -18,7 +19,6 @@ const {target, color} = Astro.props
     --trigger-background: var(--color-muted);
     background: color-mix(in oklab, var(--trigger-background) 75%, transparent);
     line-height: 1.15;
-    padding-bottom: 3px;
   }
 
   .trigger:hover {

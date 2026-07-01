@@ -1,4 +1,4 @@
-import {words} from './utilities.js'
+import {words} from '../utilities.js'
 
 export function evented() {
   const events = new Map()
