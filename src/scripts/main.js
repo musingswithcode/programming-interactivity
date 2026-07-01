@@ -1,5 +1,12 @@
-import {$$, toCamelCase, observable} from './base.js'
+import {$$, observable} from './base.js'
 import * as components from './components.js'
+import {toCamelCase} from './utilities.js'
+
+const sections = new Map()
+
+export function registerSection(name, fn) {
+  sections.set(name, fn)
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   const $sections = $$('[data-section]')
@@ -15,11 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initSection($section) {
   $section.bind(observable())
-  const fn = toCamelCase($section.data.section)
-  if (fn in window) window[fn]($section)
+  const name = toCamelCase($section.data.section)
+  if (sections.has(name)) sections.get(name)($section)
 }
 
 function initComponent($component) {
   const type = $component.data.component
-  components[type]($component)
+  const options = JSON.parse($component.data.options || null)
+  components[type]($component, options)
 }

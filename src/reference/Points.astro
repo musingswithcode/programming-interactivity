@@ -1,12 +1,70 @@
 ---
+import Diagram from '~/components/Diagram.astro'
+import Scrubber from '~/components/Scrubber.astro'
 import Section from '~/components/Section.astro'
 ---
 
 <Section name="points">
   <h3>Points</h3>
-  <p>
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores esse
-    inventore sequi quo accusamus, quod veniam repellendus similique sed libero
-    a! At, culpa non. Inventore minima praesentium animi officia debitis!
-  </p>
+
+  <div
+    class="sidebar"
+    data-direction="rtl"
+    style="--sidebar-target-width: 400px"
+  >
+    <div class="prose flow">
+      <p>
+        You can draw a point with <code>point(x, y)</code>, where x is the
+        x-coordinate and y is the y-coordinate.
+      </p>
+
+      <code>
+        point(
+        <Scrubber name="x" min={0} max={500} step={5} color="red">
+          250
+        </Scrubber>,
+        <Scrubber name="y" min={0} max={500} step={5} color="red">
+          250
+        </Scrubber>
+        )
+      </code>
+    </div>
+
+    <Diagram grid>
+      <circle cx="250" cy="250" r="10" class="stroke-none fill-red cursor-grab"
+      ></circle>
+    </Diagram>
+  </div>
 </Section>
+
+<script>
+  // @ts-nocheck
+  import {drag, svgPosition} from '~/scripts/base.js'
+  import {registerSection} from '~/scripts/main.js'
+  import {constrain} from '~/scripts/utilities.js'
+
+  function points($section) {
+    const model = $section.model
+
+    const $svg = $section.$('svg')
+    const $circle = $section.$('circle')
+
+    model.x = 250
+    model.y = 250
+
+    model.watch(() => {
+      $circle.attr('cx', model.x).attr('cy', model.y)
+    })
+
+    drag($circle, {
+      move(event) {
+        let point = svgPosition(event, $svg)
+        let x = constrain(Math.round(point.x), 0, 500)
+        let y = constrain(Math.round(point.y), 0, 500)
+        model.assign({x, y})
+      }
+    })
+  }
+
+  registerSection('points', points)
+</script>

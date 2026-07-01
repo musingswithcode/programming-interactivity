@@ -36,22 +36,31 @@ export function hover($el, {enter, exit}) {
   })
 }
 
-export function touch($el, {down, move, up}) {
+export function drag($el, {down, move, up}) {
   $el.style('touch-action', 'none')
   $el.on('pointerdown', event => {
     event.preventDefault()
     $el._el.setPointerCapture(event.pointerId)
+
+    const startX = event.clientX
+    const startY = event.clientY
+
     down?.(event)
 
-    const onMove = event => move?.(event)
+    const onMove = event => {
+      const dx = event.clientX - startX
+      const dy = event.clientY - startY
+      move?.(event, {dx, dy})
+    }
+
     const onUp = event => {
       up?.(event)
       $el.off('pointermove', onMove)
-      $el.off('pointerup pointercancel', onUp)
+      $el.off('pointerup pointercancel lostpointercapture', onUp)
     }
 
     $el.on('pointermove', onMove)
-    $el.on('pointerup pointercancel', onUp)
+    $el.on('pointerup pointercancel lostpointercapture', onUp)
   })
 }
 

@@ -1,8 +1,8 @@
 import {hover} from '../base.js'
 
-export function trigger($el) {
+export function trigger($el, {target}) {
   const $section = $el.closest('section')
-  const $targets = $section.$$(`[data-target~=${$el.data.to}]`)
+  const $targets = $section.$$(`[data-target~=${target}]`)
 
   function setFocus(active) {
     $section.class('focus', active)

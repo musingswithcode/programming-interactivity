@@ -122,6 +122,7 @@ export class Element {
 
   bind(model) {
     this.model = model
+    return this
   }
 
   getParentModel() {

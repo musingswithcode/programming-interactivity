@@ -1,4 +1,4 @@
-@theme {
+@theme static {
   --font-serif: 'Crimson Pro', serif;
 
   --color-accent: oklch(65.95% 0.2272 28.44);

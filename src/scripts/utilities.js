@@ -15,3 +15,7 @@ export function range(start, stop, step = 1) {
   for (let i = start; i <= stop; i += step) numbers.push(i)
   return numbers
 }
+
+export function constrain(value, min, max) {
+  return Math.max(Math.min(value, max), min)
+}

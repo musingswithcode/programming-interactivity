@@ -1,27 +1,24 @@
 ---
-const {target, color} = Astro.props
+const {target, color = 'muted'} = Astro.props
 ---
 
 <span
-  class:list={[
-    'trigger inline-block rounded-full text-lightest cursor-pointer transition duration-150 ease-in px-2xs pb-0.5 font-thin hover:shadow-sm',
-    color
-  ]}
   data-component="trigger"
-  data-to={target}
-  style=`--trigger-background: var(--color-${color})`
+  data-options={JSON.stringify({target})}
+  class="trigger inline-block rounded-full text-lightest cursor-pointer transition duration-150 ease-in px-2xs pb-0.5 font-thin hover:shadow-sm"
+  style=`--trigger-color: var(--color-${color})`
 >
   <slot />
 </span>
 
 <style>
   .trigger {
-    --trigger-background: var(--color-muted);
-    background: color-mix(in oklab, var(--trigger-background) 75%, transparent);
+    --trigger-color: var(--color-muted);
+    background: color-mix(in oklab, var(--trigger-color) 75%, transparent);
     line-height: 1.15;
   }
 
   .trigger:hover {
-    background: var(--trigger-background);
+    background: var(--trigger-color);
   }
 </style>

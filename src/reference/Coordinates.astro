@@ -1,5 +1,6 @@
 ---
 import {Code} from 'astro:components'
+
 import Diagram from '~/components/Diagram.astro'
 import Section from '~/components/Section.astro'
 import Trigger from '~/components/Trigger.astro'
@@ -42,6 +43,6 @@ import Trigger from '~/components/Trigger.astro'
       <Code code={`createCanvas(500, 500)`} theme="github-light" lang="js" />
     </div>
 
-    <Diagram width={500} height={500} grid axises origin />
+    <Diagram grid axises origin />
   </div>
 </Section>
