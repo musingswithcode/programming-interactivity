@@ -1,19 +1,12 @@
 ---
-const {name, min = 0, max = 10, step = 1, color = 'muted'} = Astro.props
+const {name, min = 0, max = 10, step = 1, target, color} = Astro.props
 ---
 
 <span
   data-component="scrubber"
-  data-options={JSON.stringify({name, min, max, step})}
-  class="scrubber underline underline-offset-4 decoration-current decoration-dotted decoration-2 select-none cursor-grab transition duration-150 ease-in"
-  style=`--scrubber-color: var(--color-${color})`
+  data-options={JSON.stringify({name, min, max, step, target})}
+  class="scrubber"
+  style={color && `--scrubber-color: var(--color-${color})`}
 >
   <slot />
 </span>
-
-<style>
-  .scrubber {
-    --scrubber-color: var(--color-muted);
-    color: var(--scrubber-color);
-  }
-</style>

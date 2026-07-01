@@ -1,0 +1,6 @@
+.scrubber {
+  @apply underline underline-offset-4 decoration-current decoration-dotted decoration-2 select-none cursor-grab transition duration-150 ease-in;
+
+  --scrubber-color: var(--scrubber-color, inherit);
+  color: var(--scrubber-color);
+}

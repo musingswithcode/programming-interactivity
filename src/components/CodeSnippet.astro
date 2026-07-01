@@ -1,0 +1,37 @@
+---
+import type {ShikiTransformer, DecorationItem} from 'shiki'
+import {Code} from 'astro:components'
+
+const {code, components = []} = Astro.props
+
+const inlineComponents: ShikiTransformer = {
+  preprocess(_, options) {
+    let decorations: DecorationItem[] = []
+
+    for (let i = 0; i < components.length; i++) {
+      const {position, component, options, color} = components[i]
+      const {line, start, end} = position
+
+      decorations.push({
+        start: {line: line - 1, character: start - 1},
+        end: {line: line - 1, character: end - 1},
+        properties: {
+          'class': component,
+          'data-component': component,
+          'data-options': JSON.stringify(options),
+          ...(color && {style: `--${component}-color: var(--color-${color})`})
+        }
+      })
+    }
+    options.decorations ||= []
+    options.decorations.push(...decorations)
+  }
+}
+---
+
+<Code
+  code={code.trim()}
+  lang="js"
+  theme="github-light"
+  transformers={[inlineComponents]}
+/>
