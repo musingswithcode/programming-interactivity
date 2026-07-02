@@ -1,7 +1,8 @@
 import {drag, hover} from '../base.js'
 import {constrain} from '../utilities.js'
+import {trigger} from './trigger.js'
 
-export function scrubber($el, {name, min, max, step, target}) {
+export function scrubber($el, {name, min, max, step, targets}) {
   const model = $el.getParentModel()
 
   model.watch(() => {
@@ -21,22 +22,7 @@ export function scrubber($el, {name, min, max, step, target}) {
     }
   })
 
-  if (target) {
-    const $section = $el.closest('section')
-    const $targets = $section.$$(`[data-target~=${target}]`)
-
-    function setFocus(active) {
-      $section.class('focus', active)
-      $targets.forEach($target => $target.class('focus', active))
-    }
-
-    hover($el, {
-      enter() {
-        setFocus(true)
-      },
-      exit() {
-        setFocus(false)
-      }
-    })
+  if (targets) {
+    trigger($el, {targets})
   }
 }

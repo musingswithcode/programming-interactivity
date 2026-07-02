@@ -1,7 +1,9 @@
 ---
 import CodeSnippet from '~/components/CodeSnippet.astro'
+import ControlPoint from '~/components/ControlPoint.astro'
 import Diagram from '~/components/Diagram.astro'
 import Section from '~/components/Section.astro'
+import Target from '~/components/Target.astro'
 import Trigger from '~/components/Trigger.astro'
 ---
 
@@ -15,7 +17,11 @@ import Trigger from '~/components/Trigger.astro'
   >
     <div class="prose flow">
       <p>
-        To draw a line specify the coordinates for its start and end points. Use
+        To draw a
+        {' '}
+        <Trigger targets="line" color="yellow">line</Trigger>
+        {' '}
+        specify the coordinates for its start and end points. Use
         {' '}
         <code>line(x1, y1, x2, y2)</code>, where
         {' '}
@@ -25,7 +31,7 @@ import Trigger from '~/components/Trigger.astro'
         {' '}
         are the coordinates of the
         {' '}
-        <Trigger target="start" color="blue">start point</Trigger>
+        <Trigger targets="start" color="blue">start point</Trigger>
         {' '}
         and
         {' '}
@@ -35,7 +41,7 @@ import Trigger from '~/components/Trigger.astro'
         {' '}
         are the coordinates of the
         {' '}
-        <Trigger target="end" color="blue">end point</Trigger>.
+        <Trigger targets="end" color="blue">end point</Trigger>.
       </p>
 
       <CodeSnippet
@@ -44,53 +50,39 @@ import Trigger from '~/components/Trigger.astro'
           {
             component: 'scrubber',
             position: {line: 1, start: 6, end: 9},
-            options: {name: 'x1', min: 0, max: 500, step: 10, target: 'start'}
+            options: {name: 'x1', min: 0, max: 500, step: 10, targets: 'start'}
           },
           {
             component: 'scrubber',
             position: {line: 1, start: 11, end: 14},
-            options: {name: 'y1', min: 0, max: 500, step: 10, target: 'start'}
+            options: {name: 'y1', min: 0, max: 500, step: 10, targets: 'start'}
           },
           {
             component: 'scrubber',
             position: {line: 1, start: 16, end: 19},
-            options: {name: 'x2', min: 0, max: 500, step: 10, target: 'end'}
+            options: {name: 'x2', min: 0, max: 500, step: 10, targets: 'end'}
           },
           {
             component: 'scrubber',
             position: {line: 1, start: 21, end: 24},
-            options: {name: 'y2', min: 0, max: 500, step: 10, target: 'end'}
+            options: {name: 'y2', min: 0, max: 500, step: 10, targets: 'end'}
           }
         ]}
       />
     </div>
 
     <Diagram grid>
-      <line
-        class="stroke-yellow stroke-4"
-        data-target="line"
+      <Target
+        as="line"
+        name="line"
+        class="stroke-yellow stroke-4 group-[.has-active]:not-[&.is-active]:stroke-dimmed [&.is-active]:stroke-6 transition-[stroke] duration-250 ease-in-out"
         x1="125"
         y1="375"
         x2="375"
         y2="125"
-      >
-      </line>
-      <circle
-        class="stroke-blue fill-blue cursor-grab drop-shadow-xl"
-        data-target="start"
-        cx={125}
-        cy={375}
-        r={10}
-      >
-      </circle>
-      <circle
-        class="stroke-blue fill-blue cursor-grab drop-shadow-xl"
-        data-target="end"
-        cx={375}
-        cy={125}
-        r={10}
-      >
-      </circle>
+      />
+      <ControlPoint name="start" cx={125} cy={375} r={10} />
+      <ControlPoint name="end" cx={375} cy={125} r={10} />
     </Diagram>
   </div>
 </Section>
@@ -101,13 +93,8 @@ import Trigger from '~/components/Trigger.astro'
   import {registerSection} from '~/scripts/main.js'
   import {constrain} from '~/scripts/utilities.js'
 
-  function lines($section) {
+  function lines($section, {$svg, $start, $end, $line}) {
     const model = $section.model
-
-    const $svg = $section.$('svg')
-    const $start = $section.$("circle[data-target='start']")
-    const $end = $section.$("circle[data-target='end']")
-    const $line = $section.$("line[data-target='line']")
 
     model.x1 = 125
     model.y1 = 375
@@ -122,24 +109,6 @@ import Trigger from '~/components/Trigger.astro'
         .attr('y1', model.y1)
         .attr('x2', model.x2)
         .attr('y2', model.y2)
-    })
-
-    hover($start, {
-      enter() {
-        $start.class('focus', true)
-      },
-      exit() {
-        $start.class('focus', false)
-      }
-    })
-
-    hover($end, {
-      enter() {
-        $end.class('focus', true)
-      },
-      exit() {
-        $end.class('focus', false)
-      }
     })
 
     drag($start, {

@@ -16,4 +16,3 @@
 @import './components/wrapper.css' layer(components);
 
 @import 'tailwindcss/utilities.css' layer(utilities);
-@import './utilities/target.css' layer(utilities);

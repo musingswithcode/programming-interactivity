@@ -1,0 +1,13 @@
+---
+import Target from './Target.astro'
+
+const {name, color = 'blue', ...rest} = Astro.props
+---
+
+<Target
+  as="circle"
+  name={name}
+  class="stroke-(--target-color) fill-(--target-color) cursor-grab drop-shadow-x group-[.has-active]:not-[&.is-active]:fill-dimmed group-[.has-active]:not-[&.is-active]:stroke-dimmed [&.is-active]:stroke-6 hover:stroke-6 transition-[stroke-width] duration-250 ease-in-out"
+  style={`--target-color: var(--color-${color})`}
+  {...rest}
+/>

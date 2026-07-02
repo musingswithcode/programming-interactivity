@@ -22,12 +22,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initSection($section) {
   $section.bind(observable())
+
+  const $elements = getSectionElements($section)
+
   const name = toCamelCase($section.data.section)
-  if (sections.has(name)) sections.get(name)($section)
+  if (sections.has(name)) sections.get(name)($section, $elements)
 }
 
 function initComponent($component) {
   const type = $component.data.component
   const options = JSON.parse($component.data.options || null)
   components[type]($component, options)
+}
+
+function getSectionElements($section) {
+  const elementsMap = {}
+
+  const $svg = $section.$('svg')
+  elementsMap.$svg = $svg
+
+  const $targets = $section.$$('[data-target]') || []
+  $targets.forEach($target => {
+    const name = toCamelCase($target.data.target)
+    elementsMap[`$${name}`] = $target
+  })
+
+  return elementsMap
 }

@@ -1,15 +1,15 @@
 ---
-const {target, color = 'muted'} = Astro.props
+const {as: Tag = 'span', targets, color = 'muted'} = Astro.props
 ---
 
-<span
+<Tag
   data-component="trigger"
-  data-options={JSON.stringify({target})}
-  class="trigger inline-block rounded-full text-lightest cursor-pointer transition duration-150 ease-in px-2xs pb-0.5 font-thin hover:shadow-sm"
+  data-options={JSON.stringify({targets})}
+  class="trigger inline-block rounded-full text-lightest cursor-pointer transition duration-250 ease-in-out px-2xs pt-0.5 pb-1 font-thin hover:shadow-sm"
   style=`--trigger-color: var(--color-${color})`
 >
   <slot />
-</span>
+</Tag>
 
 <style>
   .trigger {

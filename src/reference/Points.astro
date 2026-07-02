@@ -2,6 +2,8 @@
 import CodeSnippet from '~/components/CodeSnippet.astro'
 import Diagram from '~/components/Diagram.astro'
 import Section from '~/components/Section.astro'
+import Target from '~/components/Target.astro'
+import ControlPoint from '~/components/ControlPoint.astro'
 ---
 
 <Section name="points">
@@ -24,87 +26,80 @@ import Section from '~/components/Section.astro'
           {
             component: 'scrubber',
             position: {line: 1, start: 7, end: 10},
-            options: {name: 'x', min: 0, max: 500, step: 10, target: 'point'}
+            options: {
+              name: 'x',
+              min: 0,
+              max: 500,
+              step: 10,
+              targets: 'point'
+            }
           },
           {
             component: 'scrubber',
             position: {line: 1, start: 12, end: 15},
-            options: {name: 'y', min: 0, max: 500, step: 10, target: 'point'}
+            options: {
+              name: 'y',
+              min: 0,
+              max: 500,
+              step: 10,
+              targets: 'point'
+            }
           }
         ]}
       />
     </div>
 
     <Diagram grid>
-      <line
-        class="guide x stroke-1 stroke-yellow"
+      <Target
+        as="line"
+        name="x-guide"
+        class="stroke-1 stroke-muted"
         x1={250}
         y1={0}
         x2={250}
         y2={500}
-      >
-      </line>
-      <line
-        class="guide y stroke-1 stroke-yellow"
+      />
+      <Target
+        as="line"
+        name="y-guide"
+        class="stroke-1 stroke-muted"
         x1={0}
         y1={250}
         x2={500}
         y2={250}
-      >
-      </line>
-      <circle
-        class="stroke-blue fill-blue cursor-grab drop-shadow-xl"
-        data-target="point"
-        cx={250}
-        cy={250}
-        r={10}
-      >
-      </circle>
+      />
+      <ControlPoint name="point" color="yellow" cx={250} cy={250} r={10} />
     </Diagram>
   </div>
+
+  <script>
+    // @ts-nocheck
+    import {animate, drag, hover, svgPosition} from '~/scripts/base.js'
+    import {registerSection} from '~/scripts/main.js'
+    import {constrain} from '~/scripts/utilities.js'
+
+    function points($section, {$svg, $point, $xGuide, $yGuide}) {
+      const model = $section.model
+
+      model.x = 250
+      model.y = 250
+
+      model.watch(() => {
+        $point.attr('cx', model.x).attr('cy', model.y)
+        $xGuide.attr('x1', model.x).attr('x2', model.x)
+        $yGuide.attr('y1', model.y).attr('y2', model.y)
+      })
+
+      drag($point, {
+        move(event) {
+          let point = svgPosition(event, $svg)
+          let x = constrain(Math.round(point.x), 0, 500)
+          let y = constrain(Math.round(point.y), 0, 500)
+          model.assign({x, y})
+        }
+      })
+    }
+
+    registerSection('points', points)
+  </script>
 </Section>
-
-<script>
-  // @ts-nocheck
-  import {animate, drag, hover, svgPosition} from '~/scripts/base.js'
-  import {registerSection} from '~/scripts/main.js'
-  import {constrain} from '~/scripts/utilities.js'
-
-  function points($section) {
-    const model = $section.model
-
-    const $svg = $section.$('svg')
-    const $circle = $section.$('circle')
-    const $xGuide = $section.$('line.guide.x')
-    const $yGuide = $section.$('line.guide.y')
-
-    model.x = 250
-    model.y = 250
-
-    model.watch(() => {
-      $circle.attr('cx', model.x).attr('cy', model.y)
-      $xGuide.attr('x1', model.x).attr('x2', model.x)
-      $yGuide.attr('y1', model.y).attr('y2', model.y)
-    })
-
-    hover($circle, {
-      enter() {
-        $circle.class('focus', true)
-      },
-      exit() {
-        $circle.class('focus', false)
-      }
-    })
-
-    drag($circle, {
-      move(event) {
-        let point = svgPosition(event, $svg)
-        let x = constrain(Math.round(point.x / 10) * 10, 0, 500)
-        let y = constrain(Math.round(point.y / 10) * 10, 0, 500)
-        model.assign({x, y})
-      }
-    })
-  }
-
-  registerSection('points', points)
-</script>

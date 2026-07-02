@@ -1,12 +1,12 @@
 ---
-const {name, min = 0, max = 10, step = 1, target, color} = Astro.props
+const {name, min = 0, max = 10, step = 1, targets, color} = Astro.props
 ---
 
 <span
   data-component="scrubber"
-  data-options={JSON.stringify({name, min, max, step, target})}
+  data-options={JSON.stringify({name, min, max, step, targets})}
   class="scrubber"
-  style={color && `--scrubber-color: var(--color-${color})`}
+  style={color && `--color: var(--color-${color})`}
 >
   <slot />
 </span>

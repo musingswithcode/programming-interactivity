@@ -1,0 +1,7 @@
+---
+const {as: Tag = 'span', name, ...rest} = Astro.props
+---
+
+<Tag data-target={name} {...rest}>
+  <slot />
+</Tag>
